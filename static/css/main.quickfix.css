@@ -6,4 +6,17 @@
  * Contains immediate fixes that should be revised later and added in the
  * main.css.
  */
+ h5 span.location {
+    color:grey;
+    font-size: 85%;
+  }
+  
+  h5.list-items {
+    font-size:1.2em;
+    color: #ffc63a;
+    font-weight:800;
+  }
 
+  .delete_button {
+      display: inline-block;
+  }

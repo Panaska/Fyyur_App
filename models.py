@@ -22,7 +22,7 @@ class Venue(Base):
     facebook_link = Column(String(120))
     seeking_talent = Column(Boolean, default=False)
     seeking_description = Column(String(500))
-    shows = relationship('Show', backref = 'Venue', lazy='dynamic')
+    shows = relationship('Show', cascade="all,delete", backref = 'Venue', lazy='dynamic')
 
     def info(self):
         return {
@@ -56,7 +56,7 @@ class Artist(Base):
     facebook_link = Column(String(120))
     seeking_venue = Column(Boolean, default=False)
     seeking_description = Column(String(500))
-    shows = relationship('Show', backref = 'Artist', lazy='dynamic')
+    shows = relationship('Show', cascade="all,delete", backref = 'Artist', lazy='dynamic')
 
     def info(self):
         return {
@@ -86,7 +86,7 @@ class Show(Base):
     artist_id = Column(Integer, ForeignKey('Artist.id'), nullable=False)
     venue_id = Column(Integer, ForeignKey('Venue.id'), nullable=False) 
 
-    def details(self):
+    def info(self):
         return {
             'venue_id': self.venue_id,
             'venue_name': self.Venue.name,

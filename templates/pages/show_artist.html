@@ -38,10 +38,17 @@
 			<i class="fas fa-moon"></i> Not currently seeking performance venues
 		</p>
 		{% endif %}
+		<h3>
+			<a href="/artists/{{ artist.id }}/edit"><button class="btn btn-primary btn-lg">Edit this artist</button></a>
+			<form class="delete_button" action="{{ url_for('delete_artist', artist_id=artist.id) }}" method=post>
+				<input class="btn btn-default btn-lg" type="submit" value="Delete this artist">
+			</form>
+		</h3>
 	</div>
 	<div class="col-sm-6">
 		<img src="{{ artist.image_link }}" alt="Artist Image" />
 	</div>
+	
 </div>
 <section>
 	<h2 class="monospace">{{ artist.upcoming_shows_count }} Upcoming {% if artist.upcoming_shows_count == 1 %}Show{% else %}Shows{% endif %}</h2>
